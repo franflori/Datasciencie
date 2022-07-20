@@ -17,3 +17,10 @@ print(f'el valor de s es {s} y el valor de y es {y}')
 print('el valor de s es ' + str(s) + ' y el valor de y es ' + str(y))
 print('el valor de s es ', s, ' y el valor de y es ', y)
 print(f'el valor de s es %s y el valor de y es %s' %(s, y))
+
+#Ejercicio 7
+#Muestra el máximo y el mínimo de (3, -6, 4, -10, 2.6666)
+
+L = [3, -6, 4, -10, 2.6666]
+print(L)
+print(max(L),min(L))
