@@ -7,8 +7,6 @@
     pero hacerla nosotros mismos es un muy buen ejercicio).
 """
 
-from re import I
-from unittest import result
 
 
 def max(x,y):
@@ -89,8 +87,14 @@ def multip(lista):
         resultado=resultado*x
     return resultado
 
+    
+    
 
 numero1 = int(input("Elija  primero número comparar "))
+    
+
+
+       
 numero2 = int(input("Elija  segundo número comparar "))
 print("El numero mayor de es "+str(max(numero1,numero2)))
 
@@ -101,8 +105,7 @@ print("El numero mayor de es "+str(max_de_tres(numero1,numero2,numero3)))
 
 cadena=input("Introduzca la cadena medir la cadena ")
 
-print ("la longitud de la cadenas es "+str(longitud(cadena)) )
-
+print("la longitud de la cadenas es "+str(longitud(cadena)))
 
 caracter=input("Introduzca la cadena comapara ")
 
