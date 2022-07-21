@@ -59,7 +59,7 @@ def longitud(cadena):
      de lo contrario devuelve False.
 """
 
-def caracter_vocal(valor):
+def es_vocal(valor):
     if(valor[0].upper()=="A" or valor[0].upper()=="E" or  valor[0].upper()=="I" or 
     valor[0].upper()=="O" or valor[0].upper()=="U"):
         return True
@@ -74,7 +74,7 @@ def caracter_vocal(valor):
    Por ejemplo: sum([1,2,3,4])
     debería devolver 10 y multip([1,2,3,4]) debería devolver 24.
 """
-def sum(lista):
+def suma(lista):
 
     resultado=0
     for x in lista:
@@ -109,14 +109,14 @@ print("la longitud de la cadenas es "+str(longitud(cadena)))
 
 caracter=input("Introduzca la cadena comapara ")
 
-if(caracter_vocal(caracter)):
+if(es_vocal(caracter)):
     print("Es una vocal",caracter )
 else :
     print("No es una vocal", caracter)
 
 listado = [1,4,7,3,21]
-
-print("La suma del listado es "+(str(sum(listado))))
+print(listado)
+print("La suma del listado es "+(str(suma(listado))))
 print("La producto del listado es "+(str(multip(listado))))
 
 print("Enhorabuena acabaste los ejercicios")
