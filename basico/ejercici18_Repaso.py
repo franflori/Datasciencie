@@ -87,18 +87,48 @@ def multip(lista):
         resultado=resultado*x
     return resultado
 
-    
-    
-
-numero1 = int(input("Elija  primero número comparar "))
-    
+   
 
 
-       
-numero2 = int(input("Elija  segundo número comparar "))
+
+
+numero1=0
+while True:
+        try:
+            numero1 = int(input("Elija  primero número comparar "))
+          
+            break
+        except Exception as e:
+            print("No es un número")
+           
+    
+
+
+numero2=0
+while numero2==0:
+        try:
+            numero2 = int(input("Elija  segundo número comparar "))
+          
+            break
+        except Exception as e:
+            print("No es un número")
+
+
+
 print("El numero mayor de es "+str(max(numero1,numero2)))
 
-numero3 = int(input("Elija  tercer número comparar "))
+numero3=0
+while numero3==0:
+        try:
+            numero3 = int(input("Elija  tercer número comparar "))
+          
+            break
+        except Exception as e:
+            print("No es un número")
+
+
+
+
 
 print("El numero mayor de es "+str(max_de_tres(numero1,numero2,numero3)))
 
@@ -115,6 +145,9 @@ else :
     print("No es una vocal", caracter)
 
 listado = [1,4,7,3,21]
+print("la longitud de la cadenas es "+str(longitud(listado)))
+
+
 print(listado)
 print("La suma del listado es "+(str(suma(listado))))
 print("La producto del listado es "+(str(multip(listado))))
