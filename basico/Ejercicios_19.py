@@ -15,6 +15,9 @@ def inversa(cadena):
     return solucion
 
 
+def inversa2(cadena):
+    return (cadena[::1])
+
 # Ejercicio 2
 
 """
@@ -27,6 +30,7 @@ def es_palindromo(candena):
     logintud=len(cadena)
     
     for num in range(0,logintud,1):
+        print(-(num+1))
        
         if(candena[num]!=candena[-(num+1)]):
             return False
@@ -34,6 +38,11 @@ def es_palindromo(candena):
    
     return True
 
+
+
+def nuevoPalidormo(cadena):
+
+    return cadena==cadena[::1]
 # Ejercicio 3
 
 """
@@ -58,10 +67,17 @@ print("la cadena original es "+cadena + " y la inversa es " +inversa(cadena))
 
 palabraPalindromo=input("Introduzca la cadena es palidromo ")
 
-if (es_palindromo(palabraPalindromo)):
+
+
+if (nuevoPalidormo(palabraPalindromo)):
     print ("La palabra es un "+palabraPalindromo+ " palindromo")
 else :
      print ("La palabra NO es un "+palabraPalindromo+  " palindromo")
+
+
+
+
+
 
 listado = [1,4,7,3,21]
 listado2 =[5,29,212]
