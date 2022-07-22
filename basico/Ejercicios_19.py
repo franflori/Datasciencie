@@ -60,7 +60,14 @@ def superposicion(lista1,lista2):
     
     return False
 
+def superposicion2(lista1,lista2):
 
+    for x in lista1:
+       for y in lista2:
+        if(x ==y):
+            return True
+    
+    return False
 
 cadena=input("Introduzca la cadena invertir la cadena ")
 print("la cadena original es "+cadena + " y la inversa es " +inversa(cadena))
@@ -94,4 +101,9 @@ if (superposicion(listado,listado2)):
 else :
     print ("NO tiene ningun elemento comun las lista",listado,listado2)
 
+
+if (superposicion2(listado,listado2)):
+    print ("Al menos tiene un elemento comun",listado,listado2)
+else :
+    print ("NO tiene ningun elemento comun las lista",listado,listado2)
 
