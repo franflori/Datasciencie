@@ -88,10 +88,9 @@ def mas_larga_cadena(lista):
 def filtrar_palabras(lista, n):
     salida=[]
     for x in lista:
-        if(len(x)>=n):
+        if len(x) > n:
             salida.append(x)
 
-    
     return salida
 
 # EJERCICIO 5
