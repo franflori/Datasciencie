@@ -73,26 +73,44 @@ def main(codCategoria,dias):
     
     return resultado
 
+def comprobar_error_teclado( texto,type):
+    while True:
+        try:
+            valor=type(input(texto))
+            return valor
+        except Exception as e:
+            print("Error: %s" % str(e))
 
 
+"""
+print(comprobar_error("Prueba ",int))
 
+print(comprobar_error("Prueba  float",float))
+"""
 
+#num=int(input("Introduzca el año si quiere saber si es bisiesto "))
 
-num=int(input("Introduzca el año si quiere saber si es bisiesto "))
+num=comprobar_error_teclado("Introduzca el año si quiere saber si es bisiesto ",int)
 if(es_bisiesto(num)):
     print("El años es bisisiteso",num)
 else :
     print("El años NO  es bisisiteso",num)
 
 
-dolares=int(input("Introduzca cantidad de dolares "))
-interes=float(input("Introduzca tasa de interé  "))
-anio=int(input("Número de años "))
 
+
+#dolares=int(input("Introduzca cantidad de dolares "))
+#interes=float(input("Introduzca tasa de interé  "))
+#anio=int(input("Número de años "))
+dolares=comprobar_error_teclado("Introduzca cantidad de dolares ",int)
+interes=comprobar_error_teclado("Introduzca tasa de interés ",float)
+anio=comprobar_error_teclado("Número de años ",int)
 print("Capital Total ",hipoteca(dolares,interes,anio))
 
-codCategoria=int(input("Codigo de categoria "))
-dias=int(input("Número de dias  "))
-
+#codCategoria=int(input("Codigo de categoria "))
+#dias=int(input("Número de dias  "))
+codCategoria=comprobar_error_teclado("Codigo de categoria ",int)
+dias=comprobar_error_teclado("Número de dias ",int)
 print(" Total a pagar....",main(codCategoria,dias))
+
 
