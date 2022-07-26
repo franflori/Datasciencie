@@ -11,7 +11,7 @@ def es_bisiesto(anio):
 
     if (anio%4==0 and anio%100!=0) or anio%400==0:
         return True
-    100
+    
     return False
 
 # EJERCICIO 2
@@ -55,13 +55,28 @@ def main(codCategoria,dias):
     recargo=[0.50,0.75,1.00,1.50]
     df = pd.DataFrame({"categorias": categoria, "precios": precio,"codigos": codigo,"recargos": recargo})
     print(df)
+    resultado=0 
     
-    df_selecionada=df[df.codigos==codCategoria]
+    while True:
+        df_selecionada=df[df.codigos==codCategoria]
     
- 
     
-    resultado=float(df_selecionada.recargos*dias)
+        if(len(df_selecionada)>0):
+            resultado=float(df_selecionada.recargos*dias)
+            break
+        else :
+            print("No existe ningun el codigo ")
+            codCategoria=int(input(" Introduczca Codigo de categoria "))
+
+
+
+    
     return resultado
+
+
+
+
+
 
 num=int(input("Introduzca el año si quiere saber si es bisiesto "))
 if(es_bisiesto(num)):
