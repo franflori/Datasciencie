@@ -62,7 +62,7 @@ def main(codCategoria,dias):
     
     resultado=float(df_selecionada.recargos*dias)
     return resultado
-"""
+
 num=int(input("Introduzca el año si quiere saber si es bisiesto "))
 if(es_bisiesto(num)):
     print("El años es bisisiteso",num)
@@ -75,7 +75,7 @@ interes=float(input("Introduzca tasa de interé  "))
 anio=int(input("Número de años "))
 
 print("Capital Total ",hipoteca(dolares,interes,anio))
-"""
+
 codCategoria=int(input("Codigo de categoria "))
 dias=int(input("Número de dias  "))
 
