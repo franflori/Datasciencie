@@ -1,3 +1,4 @@
+
 import pandas as pd
 # EJERCICIO 1
 
@@ -58,15 +59,17 @@ def main(codCategoria,dias):
     resultado=0 
     
     while True:
-        df_selecionada=df[df.codigos==codCategoria]
+        df_selecionada=df[df.categorias==codCategoria.upper()]
     
     
         if(len(df_selecionada)>0):
+            
+            
             resultado=float(df_selecionada.recargos*dias)
             break
         else :
             print("No existe ningun el codigo ")
-            codCategoria=int(input(" Introduczca Codigo de categoria "))
+            codCategoria=input(" Introduczca Codigo de categoria ")
 
 
 
@@ -109,8 +112,11 @@ print("Capital Total ",hipoteca(dolares,interes,anio))
 
 #codCategoria=int(input("Codigo de categoria "))
 #dias=int(input("Número de dias  "))
-codCategoria=comprobar_error_teclado("Codigo de categoria ",int)
+
+codCategoria=input("Codigo de categoria ")
+#codCategoria=comprobar_error_teclado("Codigo de categoria ",int)
 dias=comprobar_error_teclado("Número de dias ",int)
-print(" Total a pagar....",main(codCategoria,dias))
+tota=main(codCategoria,dias)
+print(" Total a pagar....",tota)
 
 

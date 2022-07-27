@@ -122,10 +122,11 @@ def mayores(tup):
     cont=0
     for t in tup:
       
-       if(t>=20):
+       if(t>20):
         cont+=1
 
     return cont
+
 
 
 # EJERCICIO 7
@@ -135,10 +136,22 @@ def mayores(tup):
     También se puede hacer elegir al usuario la letra a buscar.  (Un poco mas emocionante)
 """
 
-def main(lista,buscar):
+def main():
+
+    num=int(input("Introduzca numero quiere anadir "))
+    lista=[]
+    cont=0
+    while(cont<num):
+        nombre=input("Introduzca nombre anadir ")
+        lista.append(nombre)
+        cont+=1
+    cadena=input("Introduzca palabra busca palabra ")
+
+    print(lista)
+
     salida=[]
     for x in lista:
-        if(x[0].upper()==buscar.upper()):
+        if(x[0].upper()==cadena.upper()):
             salida.append(x)
 
     
@@ -176,6 +189,10 @@ def contar_vocales(cadena):
 
 
 
+
+
+
+
 num=int(input("Introduzca numero repetir "))
 caracter=input("Introduzca numero caracteres ")
 print(generar_n_caracteres(num,caracter))
@@ -203,8 +220,8 @@ edades = (20, 13, 30, 40,70,89,23,12,29)
 print("El numero de mayores de 20 años  son",mayores(edades))
 
 
-cadena=input("Introduzca palabra busca palabra")
-print(main(palabras,cadena))
+
+print(main())
 
 
 vocales=input("contral vocales.....")
