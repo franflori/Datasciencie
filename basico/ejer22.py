@@ -9,40 +9,51 @@
     y utilice la función pasada para aplicar los descuentos o el IVA a los productos de la cesta y devolver el precio final de la cesta.
     Ejemplo de diccionario: {1000:20, 500:10, 100:1}
 """
-
-
-
 def apply_discount(price, discount):
-    descuento=price*discount[price]/100
-    total=price-descuento
-    return total
+    return price - price * discount / 100
 
 def apply_IVA(price, percentage):
-    descuento=price*percentage[price]/100
-    total=price+descuento
-    return total
+    
+    return price + price * percentage / 100
     
 
-def price_basket(basket, funcion):
+def price_basket(basket, function):
+    
+    total = 0
+    for price, discount in basket.items():
+        total += function(price, discount)
+    return total
+
+   
+    
+
+iva = {1000:20, 500:10, 100:1}
+descuento= {1000:20, 500:40, 100:11}
 
 
-    return 
+
+print('El precio de la compra tras aplicar los descuentos es: ', price_basket(descuento, apply_discount))
+print('El precio de la compra tras aplicar el IVA es: ', price_basket(iva, apply_IVA))
+
+
+
+
+
+
+
+
+
+
+
 
 # EJERCICIO 2
 
-"""
-    Escribir una función que reciba otra función y una lista,
-    y devuelva otra lista con el resultado de aplicar
-    la función dada a cada uno de los elementos de la lista.
-"""
 
 def aplica_funcion_lista(funcion, lista):
     nueva=[]
     for elemento in lista:
         nueva.append(funcion(elemento))
-    # TODO: recorrer la lista
-    # TODO: apendizar los resultados de la función en una lista vacia
-    # TODO: retorne la lista final
+   
     return nueva
 
 def cuadrado(n):
@@ -79,18 +90,106 @@ def convertir_lista(cadena):
     return dict_from_list
 
 
+
+
 cadena=input("Intruduce cadena ")
 
 print(convertir_lista(cadena))
 
-precio = {1000:20, 500:10, 100:1}
-descuento= {1000:20, 500:40, 100:11}
 
-print()
+
+
 
 lista=[1,2,4,6,8,10,23,12,3]
 print (lista)
 print(aplica_funcion_lista(cuadrado,lista))
 
 
+
+
+
+# EJERCICIO 4
+
+"""
+    Escribir una función reciba una lista de notas y
+    devuelva la lista de calificaciones correspondientes a esas notas.
+    Suspenso < 5
+    Aprobado = 5
+    Suficiente entre 5 - 7
+    Notable 7-9
+    Sobresaliente > 9
+"""
+
+
+def calificacion(lista):
+    nueva_lista=[]
+    for x in lista:
+     
+        if x<5:
+           nueva_lista.append("SUSPENSO")
+        elif  x==5 :
+            nueva_lista.append("APROBADO")
+        elif x>5 or x<7 :
+             nueva_lista.append("SUFICIENTE")
+        elif x>=7 or x<9 :
+            nueva_lista.append("NOTABLE")
+        elif x>9:
+             nueva_lista.append("SOBRESALIENTE")
+    return nueva_lista
+
+listaNotas=[5,3,5,8,6,10]
+print(calificacion(listaNotas))
+
+
+
+# EJERCICIO 5
+
+"""
+    Escribir una función que reciba un diccionario con las asignaturas y
+    las notas de un alumno y devuelva otro diccionario con las asignaturas en mayúsculas
+    y las calificaciones correspondientes a las notas.
+"""
+
+def sacar_notas(dicionario):
+    for valor, lista_valor in dicionario.items():
+        if(valor=="Asignatura"):
+            listaNota=lista_valor
+        else :
+            lista_letra=calificacion(lista_valor)
+        
+    print("mayuscula: ", listaNota)
+    print("letra: ", lista_letra)
+    listaMayuscula=[]
+    for mayuscula in listaNota:
+        listaMayuscula.append(mayuscula.upper())
+   
+    return  {"Asignatura": listaMayuscula, "Notas": lista_letra}
+
+
+asignanturas = ["Lengua", "Matematica", "Programacion", "Ingles"]
+notas = [1, 8, 6,3]
+diccionario = {"Asignatura": asignanturas, "Notas": notas}
+print("antes modificacion",diccionario)
+nuevo_diccionario=sacar_notas(diccionario)
+print("despues modificacion",nuevo_diccionario)
+
+
+# EJERCICIO 6
+
+
+
+
+"""
+    Escribir un programa que almacene la cadena de caracteres contraseña en una variable,
+    pregunte al usuario por la contraseña e imprima por pantalla si la contraseña introducida
+    por el usuario coincide con la guardada en la variable sin tener en cuenta mayúsculas y minúsculas.
+""" 
+password=input("Intrudocir pass.....")
+
+nuevaPass=input("Intrudocir pass nueva.....")
+
+if(password.upper()==nuevaPass.upper()):
+    print ("coincide")
+else :
+    print ("no coincide")
 
