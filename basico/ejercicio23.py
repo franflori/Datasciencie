@@ -46,7 +46,7 @@ print( "Notas, y edad",alumno3.getEdad(),alumno3.getNota())
 edad=int(input("Que edad tienes...."))
 
 for i in range(1,edad+1):
-    print("has cumlido ----",i)
+    print("has cumplido ----",i)
 
 
 
@@ -90,7 +90,7 @@ def sacartelefono(telefono):
     telefono=telefono.strip()
     guion=telefono.index("-")
     
-   
+  # +34-913724710-56
     nuevo=telefono[guion+1:len(telefono)]
     final_guion=nuevo.index("-")
   
@@ -128,7 +128,7 @@ print(cadena.replace(vocal.lower(),vocal.upper()))
 numero=float(input("Introduce euros...."))
 parte_entera=int(numero)
 print("Entero",parte_entera)
-partedecimal=abs(numero)-abs(parte_entera)
+partedecimal=numero-parte_entera
 print("Decimal",round(partedecimal,2))
 
 # Ejercicio 8
@@ -193,11 +193,15 @@ def solicitud(listasAsignatura):
         nota.append(numero)
    
 
-    df = pd.DataFrame({"listasAsignatura": listasAsignatura, "Nota":nota })
+    df = pd.DataFrame({"Asignatura": listasAsignatura, "Nota":nota })
     return (df)
     
+def imprimir(df):
+    for i in df.index: 
+     print("Has sacado "+ df["Asignatura"][i]+ " la nota de "+str(df["Nota"][i]))
 
 
 
 listasAsignatura=["Matemáticas", "Física", "Química", "Historia" ,"Lengua"]
-print(solicitud(listasAsignatura))
+df=solicitud(listasAsignatura)
+imprimir(df)
