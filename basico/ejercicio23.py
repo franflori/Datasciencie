@@ -129,7 +129,7 @@ numero=float(input("Introduce euros...."))
 parte_entera=int(numero)
 print("Entero",parte_entera)
 partedecimal=numero-parte_entera
-print("Decimal",round(partedecimal,2))
+print("Decimal",int(round(partedecimal,2)*100))
 
 # Ejercicio 8
 
@@ -146,7 +146,10 @@ print("Decimal",round(partedecimal,2))
 
     Abril 33900 20700
 """
-
+def imprimir_df(df):
+    print("    Mes    Ventas  Gastos")
+    for i in df.index: 
+     print(" "+ df["Mes"][i]+ " "+str(df["Ventas"][i])+ " "+str(df["Gastos"][i]))
 
 mes = ["Enero", "Febrero", "Marzo", "Abril"]
 ventas = [30500, 35600, 28300,33900]
@@ -154,6 +157,7 @@ gastos =[22000, 23400, 18100,20700]
 
 df = pd.DataFrame({"Mes": mes, "Ventas": ventas,"Gastos": gastos})
 print (df)
+imprimir_df(df)
 
 # Ejercicio 9
 
@@ -167,14 +171,16 @@ def balance(df,lista_mes):
     total=0
     for mes in lista_mes:
         df_selecionada=df[df.Mes==mes]
-        
-        total=total+int(df_selecionada.Ventas-df_selecionada.Gastos)
-
-        lista_balance.append(int(df_selecionada.Ventas-df_selecionada.Gastos))
+        if(len(df_selecionada)>0):
+            total=total+int(df_selecionada.Ventas-df_selecionada.Gastos)
+            lista_balance.append(int(df_selecionada.Ventas-df_selecionada.Gastos))
+        else :
+             lista_balance.append(int(0))
     return lista_balance,total
 
-lista_meses,total=balance(df,mes)
-print("Balance de meses",mes,lista_meses)
+mes_solicitar=["Febrero", "Marzo", "Abril","Diciembre"]
+lista_meses,total=balance(df,mes_solicitar)
+print("Balance de meses",mes_solicitar,lista_meses)
 print("Total",total)
 # Ejercicio 10
 
@@ -188,8 +194,8 @@ print("Total",total)
 def solicitud(listasAsignatura):
     nota=[]
     for asignatura in listasAsignatura:
-        print (asignatura)
-        numero=int(input("Nota."))
+       
+        numero=int(input(" Introduca la nota de "+asignatura+"  es :"))
         nota.append(numero)
    
 
