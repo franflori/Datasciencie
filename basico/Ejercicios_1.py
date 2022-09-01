@@ -158,7 +158,7 @@ print(cambiar_valores(lista))
 
 
 def sacadDaaFrame(L):
-    return pd.DataFrame(L)
+    return pd.DataFrame(L, columns=["listadoA"])
 
 L = [10, None, 8, 5, None, 20]
 print (sacadDaaFrame(L))
