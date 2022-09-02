@@ -56,14 +56,14 @@ print(multiplicar(int(input("escriba un número: ")),int(input("escriba un núme
 def palidromo (cadena):
     inv=cadena[::-1]
     if (inv==cadena):
-        return 1
+        return True
     else:
-        return 0
+        return False
     print(inv)
     
 
 cadena=input("Escribe palabra comparar palidromo: ")
-if palidromo(cadena)==1:
+if palidromo(cadena):
     print("la palabra es palindromo",cadena)
 else :
      print("la palabra NO es  palindromo",cadena)
