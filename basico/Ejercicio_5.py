@@ -24,11 +24,12 @@ print(test2, type(test2))
 # b) Apendiza un valor de valor 20, 32, 25, 32
 def anadir(lista,x):
     lista.append(x)
+    return lista
 
-anadir(test,20)
-anadir(test,32)
-anadir(test,25)
-anadir(test,32)
+test=anadir(test,20)
+test=anadir(test,32)
+test=anadir(test,25)
+test=anadir(test,32)
 
 
 print(test)
@@ -114,11 +115,13 @@ print("resultado",funcion_division(buscar_valor(test,32),buscar_valor(info,5)))
 # j) Con ayuda de reverse() muestra la inversa de test
 
 def invertir(lista):
-    return lista.reverse()
+    lista.reverse()
+
+    return lista
 
 print(test)  
 list=invertir(test)
-print(list)
+print("puassssssssccl",list)
 # k) Con el listado info utiliza un bucle for con la ayuda de enumerate(),
     # para mostrar posición y valor y crea un diccionario de nombre "newDict"
 
