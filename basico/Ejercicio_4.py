@@ -9,7 +9,7 @@
 
 # a) Con una función (por ejemplo funcion_multiplicar)
 
-from pickle import FALSE, TRUE
+
 
 
 def multiplicar(x,y):
@@ -26,7 +26,7 @@ def multipiLamda(x,y):
 
 print("landa",(lambda x,y : x*y)(3,5))
 
-
+print("nuevos, ",multipiLamda(5,5))
 
 # c) Realizarlo con entrada de teclado (input)
 
@@ -59,7 +59,7 @@ def palidromo (cadena):
         return True
     else:
         return False
-    print(inv)
+   
     
 
 cadena=input("Escribe palabra comparar palidromo: ")
