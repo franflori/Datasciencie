@@ -210,12 +210,14 @@ pintarHoras =df["Horas"]
 
 
 def pintar(pintar):
-    import plotly.express as px
+  
     import matplotlib.pyplot as plt
     figure = pintar.plot(kind="bar")
     plt.show()
 
 pintar(pintarHoras)
+
+
 # 6) De ese DataFrame, selecciona solamente aquellas materias que tienen 20 o más horas de dedicación
 print("tienen 20 o más horas")
 ImprimirData(df[df["Horas"]>=20])
