@@ -87,4 +87,24 @@ print(listaNoRepetidio(listados))
 
 # "Ana Pérez", "Juan García", "Andres Álvarez", "Luis Ramos", "Pedro Cadenas", "Estefanía Miguélez", "Alberto Delgado", "Susana Castro", "Luis González"
 
+listado_nombre=["Ana Pérez", "Juan García", "Andrés Álvarez",
+"Luis Ramos", "Pedro Cadenas", "Estefanía Miguélez",
+"Alberto Delgado", "Susana Castro", "Luis González"]
 
+def buscar_nombre(listado_nombre,cadena):
+    for nombre in listado_nombre:
+        if nombre==cadena:
+            return True
+    return False
+
+cadena="Ana Pérez"
+if(buscar_nombre(listado_nombre,cadena)) :
+    print("SI se encuentra base datos",cadena)
+else :
+   print("NO se encuentra base datos",cadena)
+
+cadena="Ana Perez"
+if(buscar_nombre(listado_nombre,cadena)) :
+    print("SI se encuentra base datos",cadena)
+else :
+   print("NO se encuentra base datos",cadena )
