@@ -215,7 +215,7 @@ def pintar(pintar):
     figure = pintar.plot(kind="bar")
     plt.show()
 
-pintar(pintarHoras)
+#pintar(pintarHoras)
 
 
 # 6) De ese DataFrame, selecciona solamente aquellas materias que tienen 20 o más horas de dedicación
@@ -224,8 +224,8 @@ ImprimirData(df[df["Horas"]>=20])
 
 # 7) De ese DataFrame, selecciona solamente aquellas materias que tienen menos de 10 horas de dedicación
 
-print("tienen 20 o más horas")
-ImprimirData(df[df["Horas"]<=10])
+print("tienen 10 menos horas")
+ImprimirData(df[df.Horas<10])
 
 # 8) De ese DataFrame, selecciona solamente (si fuera posible)
     # aquellas materias que tienen mas de 26 horas de dedicación
