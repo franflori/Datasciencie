@@ -127,12 +127,16 @@ def pintaruno(df):
     plt.show()
 
 def pintardos(df):
-    df.tarifas.plot(kind="bar")
-    plt.show
 
-#pintaruno(df)
+  
+    
+
+    df.tarifas.plot(kind="bar")
+    plt.show()
+
+pintaruno(df)
 print(df)
-#pintardos(df)
+pintardos(df)
 
 # 7) De ese DataFrame, selecciona solamente aquellos clientes con tarifa superior a 50 euros (50 no incluído)
 
@@ -187,6 +191,9 @@ y,x=x,y
 print (f"El valor x despues del  cambio {x} y el de y es {y}")
 
 # 2) Hazlo mismo con una función
+
+x=3
+y=2
 
 print (f"El valor x antes cambio {x} y el de y es {y}")
 def cambiarvalor(x,y):
