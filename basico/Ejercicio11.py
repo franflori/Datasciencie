@@ -1,10 +1,10 @@
 """
-    Creado: Isabel Maniega
+    Creado: Fran Florido
     Fecha: 08/09/2022
 """
 
 # Importar las librerías
-from pickle import FALSE
+
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -34,6 +34,19 @@ usuario = "Ana Perez"
 
 print(buscar_nombre(listado_nombre, usuario))
 # 1) Para ese listado de clientes imprime todos ellos, 1 a 1
+
+
+def buscar_nombre2(listado, usuario):
+        if usuario in listado:
+            return  f"el cliente '{usuario}'  se encuentra en mi Base de Datos de Cliente"
+        return f"'{usuario}' NO se encuentra en mi Base de Datos de Clientes"
+
+
+
+print(buscar_nombre2(listado_nombre, usuario))
+
+
+
 
 """
     2) Dentro de ese grupo de clientes..
@@ -77,7 +90,16 @@ print(buscar_nombre(listado_nombre, usuario))
     tarifas: 40,50,50,35,45,50,60,50,45
 """
 
+def imprime(lista):
+    for a in lista:
+        print(a)
+
+
+imprime(listado_nombre)
+
+
 tarifas=[40,50,50,35,45,50,60,50,45]
+imprime(tarifas)
 
 
 def CrearDataFrame(campo1,campo2):
@@ -94,6 +116,10 @@ print(df)
 print(df.head(5))
 
 print (df.head())
+
+
+
+print (df.loc[0:4,:])
 
 def imprimirdf(df,valor):
     for i in range(valor):
@@ -120,11 +146,14 @@ imprimiTarifa(df)
 # 6) Descomenta las siguientes líneas (algunos trucos y cosas útiles).
     # Ponlo en formato función!!
 
-def pintaruno(df):
-    df.tarifas.value_counts()
+def pintaruno(df,cadena):
+    df[cadena].value_counts()
 
-    df.tarifas.value_counts().plot(kind="bar")
+    df[cadena].value_counts().plot(kind="bar")
     plt.show()
+
+
+
 
 def pintardos(df):
 
@@ -134,9 +163,9 @@ def pintardos(df):
     df.tarifas.plot(kind="bar")
     plt.show()
 
-pintaruno(df)
+pintaruno(df,"tarifas")
 print(df)
-pintardos(df)
+#pintardos(df)
 
 # 7) De ese DataFrame, selecciona solamente aquellos clientes con tarifa superior a 50 euros (50 no incluído)
 
