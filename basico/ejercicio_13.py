@@ -25,9 +25,10 @@ import matplotlib.pyplot as plt
 # Si quieres hacer alguna cosa más también puedes
 
 def leer():
-    df = pd.read_csv("../datos/train.csv")
+    df = pd.read_csv("./datos/train.csv")
     return df
-#df=leer()
+    
+df=leer()
 
 def pintar(df,cadena):
     df[cadena].value_counts()
@@ -53,7 +54,7 @@ def tarea(df):
 
 
 
-#tarea(df)
+tarea(df)
 # EJERCICIO 2
 """
     Dadas estas matrices:
@@ -104,7 +105,7 @@ def tienevalor80Otra(matriz):
 print (tienevalor80Otra(m2))
 
 print (m1[:,[1,2]])
-print (m1[:,[1,2]])
+
 
 m4 = np.concatenate((m1, m2), axis=0)
 
