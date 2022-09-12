@@ -92,7 +92,7 @@ print(fibonacciMayoresque(10,1000))
 
 # 1) Leer el archivo train.csv del titanic dataset
 
-df = pd.read_csv("./datos/train.csv")
+df = pd.read_csv("./basico/datos/train.csv")
 
 # Descomentar para ejecutar:
 print(df)
@@ -109,9 +109,15 @@ df_no_sobreviven=df[df.Survived ==0]
 
 print (df_no_sobreviven)
 # 4) DataFrame de hombres que no sobrevivieron en el titanic
-print
-# 5) DataFrame de hombres que si sobrevivieron en el titanic
+df_No_sobrevive_hombre=df_no_sobreviven[df_no_sobreviven.Sex=="male"]
 
+print (df_No_sobrevive_hombre)
+# 5) DataFrame de hombres qudf_no_sobrevivene si sobrevivieron en el titanic
+df_SI_sobrevive_hombre=df_sobreviven[df_sobreviven.Sex=="male"]
+print (df_SI_sobrevive_hombre)
 # 6) DataFrame de mujeres que no sobrevivieron en el titanic
-
+df_No_sobrevive_mujer=df_no_sobreviven[df_no_sobreviven.Sex=="female"]
+print (df_No_sobrevive_mujer)
 # 7) DataFrame de mujeres que si sobrevivieron en el titanic
+df_SI_sobrevive_mujer=df_sobreviven[df_sobreviven.Sex=="female"]
+print (df_SI_sobrevive_mujer)
