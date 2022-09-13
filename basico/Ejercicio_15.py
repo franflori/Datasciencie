@@ -65,7 +65,7 @@ print(dfconcursante)
 
 # 10) Modifica Concursante "Juan" su puntuación por "None" con ayuda de .loc
 
-#dfconcursante.loc[dfconcursante["Concursantes"] == "Juan", "Resultados"] = None
+
 dfconcursante.loc[dfconcursante["Concursantes"] == "Juan",'Resutaldos']=None
 
 print(dfconcursante)
