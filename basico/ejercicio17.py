@@ -28,23 +28,42 @@ print(Matematicas.suma(5))
 print(Matematicas.suma(10))
 
 class Mat2:
-    
-    def inicializar(self,x):
-        self.x=x
+    x=0
+    def __init__(self,x):
+        self.x = x
 
+
+    def imprimir(self):
+        print("El numero es ",self.x)
     def suma(self):
-        a=10+int(self)
-        print (a)
-        return a
+        self.x=10+ self.x
+       
     
     def resta(self):
-        b=10-self
-        return b
+        self.x=10-self.x
+       
 
+
+ma=Mat2 (5)
+
+ma.imprimir()
+ma.suma()
+ma.imprimir()
+ma.resta()
+ma.imprimir()
+
+
+ma2=Mat2 (10)
+
+ma2.imprimir()
+ma2.suma()
+ma2.imprimir()
+ma2.resta()
+ma2.imprimir()
 
 
 """
-ma=Mat2 ()
+
 ma.inicializar(5)
 a=str(ma.resta(ma.x))
 """
