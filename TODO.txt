@@ -1,0 +1,5 @@
+* corto tiempo
+    * POO ejercicio
+* Largo tiempo
+    * Estadistica
+    * Data Sciencie
