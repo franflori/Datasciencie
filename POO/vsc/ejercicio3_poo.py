@@ -28,8 +28,8 @@ class NumeroComplejo:
             return True
         return False
     
-
-
+    def suma( self, num2):
+        return NumeroComplejo(self.x+num2.x,self.y+num2.y)
     
     
 # EJERCICIO 2
@@ -65,6 +65,9 @@ num3=NumeroComplejo(4,6)
 print(num3)
 print(num3.comparar(numer2))
 
+num4=numero.suma(num3)
+
+print(f"La suma es {num4} de los  numero {numero} y de {num3}" )
 # EJERCICIO 4
 
 """
