@@ -46,16 +46,17 @@ class MiLibro (Librería):
     def misLibros(self):
         return f"libro biblioteca MiLibro {self.nombre} seccion {self.sección} editorial {self.editorial} de {self.año} "
 
-    def calculo():
-        return 5
+   
         
 libro4=MiLibro("Mi primera Novela", "Novela", "Bruño", 2019)
 libro5=MiLibro("Gatos", "Literatura", "Listado", 2018)     
-  
-operacion=libro4.media()
-print("La operacios es",operacion)
+def media(lista):
+    return sum(lista)/len(lista)  
+
 print(libro4.misLibros())
 print(libro5.misLibros())
+operacion=media([libro4.año,libro5.año])
+print("La operacios es",operacion)
 
 
 
