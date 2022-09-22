@@ -1,3 +1,10 @@
+
+Rease Version  0.1.0 15/09/2002 francisco.florido@gmail.com
+    Nueva funcionalidades
+        . Ejercicios POO
+    - Bug fixes:
+
+
 Rease Version  0.1.0 15/09/2002 francisco.florido@gmail.com
     Nueva funcionalidades
         . Ejercicios de Pyton básico
