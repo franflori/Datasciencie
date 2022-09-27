@@ -1,0 +1,13 @@
+pip install virtualenv
+virtualenv env
+
+./env/SCripts/activate
+pip install pandas
+
+pip list
+
+jupyter notebook
+
+
+instala libreria
+ pip  install matplotlib
