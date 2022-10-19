@@ -1,13 +1,24 @@
-version: "3"
+# recordar que para ejecutar debéis de modificar el nombre del archivo a docker-compose.yml
+# Use postgres/example user/password credentials
+version: '3.1'
 
 services:
-  web:
-    build: ./project
-    command: uvicorn app.main:app --reload --workers 1 --host 0.0.0.0 --port 80
-    volumes:
-      - ./project:/usr/src/app
+
+  db:
+    image: postgres
+    restart: always
     ports:
-      - 80:80
+      - 5432:5432
     environment:
-      - ENVIRONMENT=dev
-      - TESTING=0
+      POSTGRES_PASSWORD: cursoPython
+      POSTGRES_USER: Fran
+  mongodb:
+    image: mongo
+    restart: always
+    ports:
+      - 27017:27017
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
