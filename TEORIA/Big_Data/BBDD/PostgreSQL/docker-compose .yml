@@ -1,0 +1,21 @@
+# recordar que para ejecutar debéis de modificar el nombre del archivo a docker-compose.yml
+# Use postgres/example user/password credentials
+version: '3.1'
+
+services:
+
+  db:
+    image: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: cursoPython
+      POSTGRES_USER: IsaMan
+
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080

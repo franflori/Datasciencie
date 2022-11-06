@@ -4,6 +4,7 @@ import pandas as pd
 # EJERCICIO 1
 
 """
+    nueva maquina
    Dado el siguiente listado: ["Python", "Matlab", "R", "VBA", "Julia", "C++"].
 
     Modifica con un algoritmo ese listado.
