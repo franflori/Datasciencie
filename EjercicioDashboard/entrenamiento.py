@@ -49,5 +49,5 @@ class entrenamiento():
         acc_NB = accuracy_score(y_test, y_pred)
         return acc_NB,clf
     
-
+    def prevision
   

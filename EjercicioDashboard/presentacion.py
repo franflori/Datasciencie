@@ -1,5 +1,7 @@
 import streamlit as st
 from datos_get import Datos_get
+import pandas as pd
+import matplotlib.pyplot as plt
 
 
 def pintarDatos():
@@ -13,6 +15,7 @@ def pintarDatos():
     # tail()
     st.write("Vamos a imprimir los últimos 5 valores del dataset")
     st.write(df.tail())
+    return df
 
 
 # wide mode: modo apaisado:
@@ -34,9 +37,10 @@ check = st.sidebar.checkbox("Quieres que se cage los datos")
 if not check:
     st.write("Buena elección")
 else:
-    pintarDatos()
+    df=pintarDatos()
+    fig, ax = plt.subplots()
+    ax.hist(df.Sex)
+    st.pyplot(fig)
 
-   
   
-
 
