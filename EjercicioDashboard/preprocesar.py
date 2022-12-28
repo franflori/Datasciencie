@@ -1,20 +1,20 @@
 import pandas as pd
 import numpy as np
 
-class preprocesar():
+class Preprocesar():
 
-    def name_process(self,df,opcion):
-        if opcion==1 :
-            df = df.drop(["Name"], axis=1)
+    def name_process(self,df):
+       
+        df = df.drop(["Name"], axis=1)
         return df
     
-    def ticket_process(self,df,opcion):
-        if opcion==1 :
-            df = df.drop(["Ticket"], axis=1)
+    def ticket_process(self,df):
+        
+        df = df.drop(["Ticket"], axis=1)
         return df
-    def cabin_process(self,df,opcion):
-        if opcion==1 :
-            df = df.drop( ["Cabin"], axis=1)
+    def cabin_process(self,df):
+    
+        df = df.drop( ["Cabin"], axis=1)
         return df
     
     def age_process(self,df,opcion):
@@ -45,8 +45,12 @@ class preprocesar():
     
 
     def escalado_Age(self,df):
+       
         df.Age = (df.Age - np.mean(df.Age, axis=0)) / (np.std(df.Age, axis=0))
-        return df
+        return df,np.mean(df.Age, axis=0),np.std(df.Age, axis=0)
+    
     def escalado_Fare(self,df):
         df.Fare = (df.Fare - np.mean(df.Fare, axis=0)) / (np.std(df.Fare, axis=0))
-        return df
+
+       
+        return df,np.mean(df.Fare, axis=0),np.std(df.Fare, axis=0)
