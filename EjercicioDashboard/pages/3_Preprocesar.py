@@ -1,6 +1,8 @@
 import streamlit as st
 from preprocesar import Preprocesar
 from pasajero import Pasajero
+from pantalla import Pantalla
+
 st.title("Pre procesar")
 
 
@@ -27,41 +29,37 @@ def preprocesar(df):
     return df,memaAge,stdAge,meanFare,stdFare
 
 
-st.write("final")
 
-print (st.session_state["df_datos"])
-df,memaAge,stdAg,meanFare,stdFare=preprocesar(st.session_state["df_datos"])
-
-st.write("Vamos a imprimir los primeros 5 valores del dataset")
-st.write(df.tail())
-
-if "df_datos" not in st.session_state:
-    st.session_state["df_datos"] = ""
-st.session_state["df_datos"]= df
-pasajero= Pasajero()
+pantalla=st.session_state["pantalla"]
 
 
-if "memaAge" not in st.session_state:
-    st.session_state["memaAge"] = ""
-st.session_state["memaAge"]= memaAge
+if(pantalla.getIniciacion()==0):
+    st.write("final")
 
-if "stdAg" not in st.session_state:
-    st.session_state["stdAg"] = ""
-st.session_state["stdAg"]= stdAg
+    print (st.session_state["df_datos"])
+    df,memaAge,stdAg,meanFare,stdFare=preprocesar(st.session_state["df_datos"])
 
-if "meanFare" not in st.session_state:
-    st.session_state["meanFare"] = ""
-st.session_state["meanFare"]= meanFare
-if "meanFare" not in st.session_state:
-    st.session_state["stdFare"] = ""
-st.session_state["stdFare"]= stdFare
- 
-pasajero.setMemaAge(memaAge)
-pasajero.setStdAge(stdAg)
-pasajero.setMeanFare(meanFare)
-pasajero.SetStdFare(stdFare)
+    st.write("Vamos a imprimir los primeros 5 valores del dataset")
+    st.write(df.tail())
 
+    if "df_datos" not in st.session_state:
+        st.session_state["df_datos"] = ""
+    st.session_state["df_datos"]= df
+    pasajero= Pasajero()
 
-if "pasajero" not in st.session_state:
-    st.session_state["pasajero"] = ""
-st.session_state["pasajero"]= pasajero
+    pasajero.setPassengerId(df.shape [0]+1)
+    pasajero.setMemaAge(memaAge)
+    pasajero.setStdAge(stdAg)
+    pasajero.setMeanFare(meanFare)
+    pasajero.SetStdFare(stdFare)
+
+    print(pasajero)
+    if "pasajero" not in st.session_state:
+        st.session_state["pasajero"] = ""
+    st.session_state["pasajero"]= pasajero
+    pantalla.pulsaPrepocesar()
+
+    st.session_state["pantalla"] = pantalla
+
+else:
+    st.write("Error en la pantalla")

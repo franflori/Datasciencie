@@ -2,31 +2,57 @@ class Pantalla():
 
     
     def __init__(self):
-        self.cargarDatos=True
-        self.preprocesar=False
-        self.entrenar=False
-        self.guardar=False
+        self.iniciacion=0
+        self.preprocesar=0
+        self.entrenar=0
+        self.analisis=0
+        self.predecir=0
     
-    def pulsaCargaDatos(self):
-        self.cargarDatos=True
-        self.preprocesar=True
-        self.entrenar=False
-        self.guardar=False
+    def pulsaPrepocesar(self):
+        self.iniciacion=1
+        self.preprocesar=1
+        self.entrenar=0
+        self.analisis=0
+        self.predecir=0
 
-    def pulsapreprocesar(self):
-        self.cargarDatos=True
-        self.preprocesar=True
-        self.entrenar=True
-        self.guardar=False
+    def pulsarEntrenaminto(self):
+        self.iniciacion=2
+        self.preprocesar=2
+        self.entrenar=1
+        self.analisis=0
+        self.predecir=0
+       
+    def pulsarAnalisis(self):
+        self.iniciacion=2
+        self.preprocesar=2
+        self.entrenar=2
+        self.analisis=1
+        self.predecir=0
 
-    def pulsarEntrenar(self):
-        self.cargarDatos=True
-        self.preprocesar=True
-        self.entrenar=True
-        self.guardar=True
-
+    
+    def pulsaPredecir(self):
+        self.iniciacion=2
+        self.preprocesar=2
+        self.entrenar=2
+        self.analisis=2
+        self.predecir=1
+       
+    def getIniciacion(self):
+        return self.iniciacion
+    
+    def getPreprocesar(self):
+        return self.preprocesar
+    def getEntrenar(self):
+        return self.entrenar
+    
+    def getAnalisis(self):
+        return self.analisis
+    def getPredecir(self):
+        return self.predecir
+    
     def __str__(self):
-        return f"Datos Pasaje ({ self.passengerId},{ self.survived},{self.pclass},{self.nName},{self.sex},{self.age},{self.sibsp},{self.parch},{self.ticket},{self.fare},{self.cabin},{self.embarked})"
-
-
+        return f"Datos Pantalla ({self.iniciacion},{self.preprocesar},{self.entrenar},{self.analisis},{self.predecir})"
+ 
+        
+      
     

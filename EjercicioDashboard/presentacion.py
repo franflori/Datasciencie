@@ -137,7 +137,7 @@ def captardatos(pasajero,valor):
    
   
     # entrada de texto
-    pasajero.SetPassengerId(df.shape [0])
+  
     pasajero.setPclass (st.text_input("Inserte clase: "))
     pasajero.setNName (st.text_input("Nombre : "))
     pasajero.setSex (st.text_input("Sexo : "))

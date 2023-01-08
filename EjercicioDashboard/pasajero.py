@@ -52,7 +52,7 @@ class Pasajero():
         self.embarked=embarked
 
 
-    def SetPassengerId(self,passengerId):
+    def setPassengerId(self,passengerId):
          self.passengerId=passengerId
 
     def setSuvived(self,survived):
@@ -160,9 +160,7 @@ class Pasajero():
             return valor
         #Escalado Fare
         if cadena=="Fare":  
-            print ("valorsssss",self.fare) 
-            print ("valor ",self.meanFare)
-            print ("valor---",self.stdFare)
+            
             valor=(self.fare -  self.meanFare) / self.stdFare 
             return valor
        

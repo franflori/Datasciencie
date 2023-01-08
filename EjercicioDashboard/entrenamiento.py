@@ -21,8 +21,11 @@ class Entrenamiento():
     X_test=DataFrame()
     y_train=DataFrame()
     y_test=DataFrame()
-    
-
+    acc_KN=DataFrame()
+    acc_DT=DataFrame()
+    acc_RF=DataFrame()
+    acc_NB=DataFrame()
+    acc_SVC=DataFrame()
 
     def cargarEntranamiento(self, X,y):
     
@@ -39,26 +42,25 @@ class Entrenamiento():
       
         self.clf_KN.fit(self.X_train, self.y_train)
         y_pred = self.clf_KN.predict(self.X_test)
-        acc_KN = accuracy_score(self.y_test, y_pred)
-        return acc_KN
+        self.acc_KN = accuracy_score(self.y_test, y_pred)
+        return self.acc_KN
 
     def algoritmoDecisionTreeClassifier(self):
         #DecisionTreeClassifier
         
         self.clf_DT.fit(self.X_train, self.y_train)
         y_pred = self.clf_DT.predict(self.X_test)
-        acc_DT = accuracy_score(self.y_test, y_pred)
-        print(acc_DT)
-     
-        return acc_DT
+        self.acc_DT = accuracy_score(self.y_test, y_pred)
+       
+        return self.acc_DT
     
     def algoritmoRandomForestClassifier(self):
         # RandomForestClassifier
         
         self.clf_RF.fit(self.X_train, self.y_train)
         y_pred = self.clf_RF.predict(self.X_test)
-        acc_RF = accuracy_score(self.y_test, y_pred)
-        return acc_RF 
+        self.acc_RF = accuracy_score(self.y_test, y_pred)
+        return self.acc_RF 
     
     def  algoritmoGaussianNB(self):
 
@@ -66,16 +68,16 @@ class Entrenamiento():
        
         self.clf_NB.fit(self.X_train, self.y_train)
         y_pred = self.clf_NB.predict(self.X_test)
-        acc_NB = accuracy_score(self.y_test, y_pred)
-        return acc_NB
+        self.acc_NB = accuracy_score(self.y_test, y_pred)
+        return self.acc_NB
     
     def  SVC(self):
 
         
         self.clf_SVC.fit(self.X_train, self.y_train)
         y_pred = self.clf_SVC.predict(self.X_test)
-        acc_SVC = accuracy_score(self.y_test, y_pred)
-        return acc_SVC
+        self.acc_SVC = accuracy_score(self.y_test, y_pred)
+        return self.acc_SVC
     
 
     def predecir(self,algoritmo,valorx):

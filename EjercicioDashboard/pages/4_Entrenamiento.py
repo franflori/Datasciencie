@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 from entrenamiento import Entrenamiento
+from pantalla import Pantalla
 
 def funcion(totalcolumna,extaer,cadena):
     print(extaer)
@@ -23,42 +24,62 @@ def calcularEntrenamiento(df ,opciones):
     entrena.cargarEntranamiento(ValoresX,df["Survived"])
     acc_DT=entrena.algoritmoDecisionTreeClassifier()
    
-    st.write(acc_DT)
+    st.write("algoritmoDecisionTreeClassifier",acc_DT)
 
     acc_KN=entrena.algoritmoKNeighborsClassifier()
     
-    st.write(acc_KN)
+    st.write("algoritmoKNeighborsClassifier ",acc_KN)
 
     acc_RF=entrena.algoritmoRandomForestClassifier()
   
-    st.write(acc_RF)
+    st.write("algoritmoRandomForestClassifier",acc_RF)
 
     acc_NB=entrena.algoritmoGaussianNB()
    
-    st.write(acc_NB)
+    st.write("algoritmoGaussianNB",acc_NB)
 
     acc_SVC=entrena.SVC()
    
-    st.write(acc_SVC)
+    st.write("algoritmoGaussianNB",acc_SVC)
 
     return entrena
 
 
+pantalla=st.session_state["pantalla"]
+
+if(pantalla.getPreprocesar()==1):
+
+    opciones = st.multiselect("Datos de cabecera:", 
+                            ["Age", "SibSp", "Parch","Fare","Sex_male","Pclass_2",
+                            "Pclass_3","Embarked_Q","Embarked_S"])
+
+    st.write("Has elegido los siguientes frameworks: ", opciones)
+
+    if st.button("Realizar Estudio"):
+        resulEntrenamiento=calcularEntrenamiento(st.session_state["df_datos"] ,opciones)
+       
+       
+       
+        if "Entrenamiento" not in st.session_state:
+            st.session_state["Entrenamiento"] = ""
+        st.session_state["Entrenamiento"]= resulEntrenamiento
+
+        if "opciones" not in st.session_state:
+            st.session_state["opciones"] = ""
+        st.session_state["opciones"]= opciones
+        pantalla.pulsarEntrenaminto()
+        st.session_state["pantalla"] = pantalla
+  
+        print(pantalla)
 
 
-opciones = st.multiselect("Datos de cabecera:", 
-                          ["Age", "SibSp", "Parch","Fare","Sex_male","Pclass_2",
-                          "Pclass_3","Embarked_Q","Embarked_S"])
 
-st.write("Has elegido los siguientes frameworks: ", opciones)
 
-if st.button("Realizar Estudio"):
-    resulEntrenamiento=calcularEntrenamiento(st.session_state["df_datos"] ,opciones)
-    if "Entrenamiento" not in st.session_state:
-        st.session_state["Entrenamiento"] = ""
-    st.session_state["Entrenamiento"]= resulEntrenamiento
 
-    
+else:
+    st.write("Error en la pantalla")
+
+
 
 
 
