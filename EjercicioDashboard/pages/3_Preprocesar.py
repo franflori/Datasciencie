@@ -2,6 +2,7 @@ import streamlit as st
 from preprocesar import Preprocesar
 from pasajero import Pasajero
 from pantalla import Pantalla
+from grafico import Grafico
 
 st.title("Pre procesar")
 
@@ -33,7 +34,7 @@ def preprocesar(df):
 pantalla=st.session_state["pantalla"]
 
 
-if(pantalla.getIniciacion()==0):
+if(pantalla.getPreprocesar()==1):
     st.write("final")
 
     print (st.session_state["df_datos"])
@@ -42,9 +43,12 @@ if(pantalla.getIniciacion()==0):
     st.write("Vamos a imprimir los primeros 5 valores del dataset")
     st.write(df.tail())
 
-    if "df_datos" not in st.session_state:
-        st.session_state["df_datos"] = ""
-    st.session_state["df_datos"]= df
+   
+   
+   
+    if "df_datos_preprocesado" not in st.session_state:
+        st.session_state["df_datos_preprocesado"] = ""
+    st.session_state["df_datos_preprocesado"]= df
     pasajero= Pasajero()
 
     pasajero.setPassengerId(df.shape [0]+1)
@@ -52,14 +56,23 @@ if(pantalla.getIniciacion()==0):
     pasajero.setStdAge(stdAg)
     pasajero.setMeanFare(meanFare)
     pasajero.SetStdFare(stdFare)
+   
+    pantalla.pulsarEntrenaminto()
 
-    print(pasajero)
+   
+
+
+
+  
     if "pasajero" not in st.session_state:
         st.session_state["pasajero"] = ""
     st.session_state["pasajero"]= pasajero
-    pantalla.pulsaPrepocesar()
+    
 
     st.session_state["pantalla"] = pantalla
 
-else:
-    st.write("Error en la pantalla")
+st.write(st.session_state["df_datos_preprocesado"])
+pintarGrafico=Grafico()
+cadena=["Age", "SibSp", "Parch","Fare","Sex_male","Pclass_2",
+                            "Pclass_3","Embarked_Q","Embarked_S"]
+pintarGrafico.iniciaGraficios(cadena,st.session_state["df_datos_preprocesado"],False)

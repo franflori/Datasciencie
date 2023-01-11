@@ -95,6 +95,8 @@ class Entrenamiento():
         else:
             resultado= self.clf_SVC.predict(valorx)
        
+
+
         return resultado
 
              

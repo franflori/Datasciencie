@@ -47,7 +47,7 @@ def calcularEntrenamiento(df ,opciones):
 
 pantalla=st.session_state["pantalla"]
 
-if(pantalla.getPreprocesar()==1):
+if(pantalla.getEntrenar()==1):
 
     opciones = st.multiselect("Datos de cabecera:", 
                             ["Age", "SibSp", "Parch","Fare","Sex_male","Pclass_2",
@@ -56,7 +56,7 @@ if(pantalla.getPreprocesar()==1):
     st.write("Has elegido los siguientes frameworks: ", opciones)
 
     if st.button("Realizar Estudio"):
-        resulEntrenamiento=calcularEntrenamiento(st.session_state["df_datos"] ,opciones)
+        resulEntrenamiento=calcularEntrenamiento(st.session_state["df_datos_preprocesado"] ,opciones)
        
        
        
@@ -67,10 +67,12 @@ if(pantalla.getPreprocesar()==1):
         if "opciones" not in st.session_state:
             st.session_state["opciones"] = ""
         st.session_state["opciones"]= opciones
-        pantalla.pulsarEntrenaminto()
+        
+        pantalla.pulsarAnalisis()
+
         st.session_state["pantalla"] = pantalla
   
-        print(pantalla)
+       
 
 
 

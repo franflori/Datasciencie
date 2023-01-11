@@ -3,6 +3,8 @@ import streamlit as st
 import pandas as pd
 from pasajero import Pasajero
 from pantalla import Pantalla
+from PIL import Image
+
 
 def captardatos(pasajero):
    
@@ -15,11 +17,11 @@ def captardatos(pasajero):
          ('1st', '2nd','3rd','NS/NC'))
 
     if claseEle == '1st':
-       pasajero.setPclass ("1") 
+       pasajero.setPclass (1) 
     elif claseEle == '2nd':
-        pasajero.setPclass ("2")
+        pasajero.setPclass (2)
     elif claseEle == '3rd':
-        pasajero.setPclass ("3")
+        pasajero.setPclass (3)
     else:
         pasajero.setPclass ("") 
 
@@ -59,23 +61,23 @@ def captardatos(pasajero):
    
     pasajero.setTicket (st.text_input("Identificador del Billete: "))
     #pasajero.setFare (st.number_input("Inserte Fare: "))
-    precioparche = st.slider('Precios', 0.00, 200.01, 0.01)
+    precioparche = st.slider('Precios', 0.00, 1000.01, 0.01)
     pasajero.setFare(precioparche)
 
- #   pasajero.setCabin (st.text_input("Inserte Cabin: "))
+    pasajero.setCabin (st.text_input("Cabina donde embarca: "))
     
     CabinEle = st.radio(
         "Puerto de Embarkation del  Pasajero",
          ('Cherbourg', 'Queenstown','Southampton','NS/NC'))
 
     if CabinEle == 'Cherbourg':
-       pasajero.setCabin ("C") 
+       pasajero.setEmbarked ("C") 
     elif CabinEle == 'Queenstown':
-        pasajero.setCabin ("Q")
+        pasajero.setEmbarked ("Q")
     elif CabinEle == 'Southampton':
-        pasajero.setCabin ("S")
+        pasajero.setEmbarked ("S")
     else:
-        pasajero.setCabin ("") 
+        pasajero.setEmbarked ("") 
 
 
    # pasajero.setEmbarked (st.text_input("Inserte Embarquessss: "))
@@ -113,7 +115,7 @@ def elegirValoresEntrenamiento(entrenamiento):
 pantalla=st.session_state["pantalla"]
 
 print(pantalla)
-if(pantalla.getEntrenar()==1):
+if(pantalla.getAnalisis()==1):
     pasajero=st.session_state["pasajero"]
     pasajero=captardatos(pasajero)
     print (pasajero)
@@ -144,10 +146,19 @@ if(pantalla.getEntrenar()==1):
         pasajero.setSuvived(valor)
         print(pasajero)
         
+        if(valor==1):
+            image = Image.open('image//viva.jpg')
+            st.image(image, caption='VIVO')
+            st.write("VIVO")
+        else:
+            imagemuerto = Image.open('image//muerto.jpg')
+            st.image(imagemuerto, caption='NO SOBREVIVIO')
+            st.write("NO SOBREVIVIO")
+
         if "pasajero" not in st.session_state:
             st.session_state["pasajero"] = ""
         st.session_state["pasajero"]= pasajero
-        pantalla.pulsarAnalisis()
+        pantalla.pulsaGuardar()
 
         st.session_state["pantalla"] = pantalla
       
