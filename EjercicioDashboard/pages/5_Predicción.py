@@ -26,7 +26,7 @@ def captardatos(pasajero):
         pasajero.setPclass ("") 
 
     pasajero.setNName (st.text_input("Nombre y datos del pasajero : "))
-   # pasajero.setSex (st.text_input("Sexo : "))
+ 
 
     sexoEle = st.radio(
         "Sexo del Pasajero",
@@ -39,16 +39,13 @@ def captardatos(pasajero):
     else:
         pasajero.setSex ("") 
 
-    # entrada de números
-    #pasajero.setAge(st.number_input("Inserte un número: "))
+  
     age = st.slider('Edad del pasajero', 0, 99, 25)
     pasajero.setAge(age)
 
 
 
-    
-   # pasajero.setSibsp(st.number_input("Inserte sibsp: "))
-   # pasajero.setParch(st.number_input("Inserte un parch: "))
+
     
     
 
@@ -60,7 +57,7 @@ def captardatos(pasajero):
     pasajero.setParch(parche)
    
     pasajero.setTicket (st.text_input("Identificador del Billete: "))
-    #pasajero.setFare (st.number_input("Inserte Fare: "))
+   
     precioparche = st.slider('Precios', 0.00, 1000.01, 0.01)
     pasajero.setFare(precioparche)
 
@@ -80,7 +77,7 @@ def captardatos(pasajero):
         pasajero.setEmbarked ("") 
 
 
-   # pasajero.setEmbarked (st.text_input("Inserte Embarquessss: "))
+   
     return pasajero
    
  
@@ -114,11 +111,11 @@ def elegirValoresEntrenamiento(entrenamiento):
 
 pantalla=st.session_state["pantalla"]
 
-print(pantalla)
+
 if(pantalla.getAnalisis()==1):
     pasajero=st.session_state["pasajero"]
     pasajero=captardatos(pasajero)
-    print (pasajero)
+   
 
     if "pasajero" not in st.session_state:
         st.session_state["pasajero"] = ""
@@ -131,9 +128,29 @@ if(pantalla.getAnalisis()==1):
     opciones=st.session_state["opciones"]
     entrenamiento= st.session_state["Entrenamiento"] 
 
-    eleccion=elegirValoresEntrenamiento(entrenamiento)
-    print(eleccion)
 
+
+  
+
+
+   
+    valoresImprmir = {"DecisionTree":entrenamiento.getAcc_DT(), "KNeighbors":entrenamiento.getAcc_KN(), "GaussianNB":entrenamiento.getAcc_NB(), "RandomForest": entrenamiento.getAcc_RF(),"SVC": entrenamiento.getAcc_SVC()}
+    
+
+    algoritmo = list(valoresImprmir.keys())
+    valores = list(valoresImprmir.values())
+    diccionario = {"Algoritmo": algoritmo, "Valores": valores}
+
+    valor1, valor2 = st.columns(2)
+    with valor1:
+         st.dataframe(pd.DataFrame(diccionario))
+     
+    with valor2:
+        eleccion=elegirValoresEntrenamiento(entrenamiento)
+        
+    
+    print(eleccion)
+    print(valoresImprmir)
     if st.button("Realizar Estudio"):
     
         nuevo=pd.DataFrame()
@@ -149,11 +166,11 @@ if(pantalla.getAnalisis()==1):
         if(valor==1):
             image = Image.open('image//viva.jpg')
             st.image(image, caption='VIVO')
-            st.write("VIVO")
+            
         else:
             imagemuerto = Image.open('image//muerto.jpg')
             st.image(imagemuerto, caption='NO SOBREVIVIO')
-            st.write("NO SOBREVIVIO")
+           
 
         if "pasajero" not in st.session_state:
             st.session_state["pasajero"] = ""
@@ -163,5 +180,6 @@ if(pantalla.getAnalisis()==1):
         st.session_state["pantalla"] = pantalla
       
 else:
-    st.write("Error en la pantalla")
+   st.write("Error en la pantalla .Debe ejecurtase antes pantallas anteriores")
+
 

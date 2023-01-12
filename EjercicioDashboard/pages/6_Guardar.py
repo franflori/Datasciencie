@@ -21,12 +21,16 @@ def grabarDatos(pasajero):
 pantalla=Pantalla()
 pantalla=st.session_state["pantalla"]
 
-print (pantalla.getAnalisis())
+
 df=st.session_state["df_datos"]
 
     
 
-st.write(pantalla.getGuardar())
+st.markdown(" Almacenarán los datos que nos den los usuarios, para ir enriqueciendo nuestros datos.")
+
+st.markdown("")
+st.markdown("")
+st.markdown("")
 if(pantalla.getGuardar()==1):
     pasajero=st.session_state["pasajero"]
     
@@ -35,23 +39,25 @@ if(pantalla.getGuardar()==1):
         df=grabarDatos(pasajero)
         st.write("Se Guardado corectamente")        
         pantalla.pulsaIniciar() 
-        st.write(pantalla.getGuardar())
+     
         st.session_state["pantalla"] = pantalla
-        st.write(pantalla)
+        st.dataframe(df)
+        
     elif pantalla.getGuardar()==2:
         st.write("Se Guardado corectamente el dato")
-        st.write(df)
+       
+        st.dataframe(df)
         
     
   
    
 
 elif pantalla.getGuardar()==0:
-    st.write("Error en la pantalla")
+    st.write("Error en la pantalla .Debe ejecurtase antes las  pantallas anteriores")
 
 elif pantalla.getGuardar()==2:
     st.write("Se Guardado corectamente")
-    st.write(df)
+    st.dataframe(df)
 
 
 

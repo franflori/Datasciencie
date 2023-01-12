@@ -13,34 +13,34 @@ def calcularEntrenamiento(df ,opciones):
     ValoresX=pd.DataFrame()
     entrena=Entrenamiento()
     for opcion in opciones:
-        st.write("El resultado de los números es: ", opcion)
+       
         ValoresX=funcion(ValoresX,df[opcion],opcion)
        
     
 
-    st.write(ValoresX)
-    st.write(df.isnull().sum())
+   ## st.write(ValoresX)
+   # st.write(df.isnull().sum())
     #entrena=Entrenamiento(ValoresX,df["Survived"])
     entrena.cargarEntranamiento(ValoresX,df["Survived"])
-    acc_DT=entrena.algoritmoDecisionTreeClassifier()
+    entrena.algoritmoDecisionTreeClassifier()
    
-    st.write("algoritmoDecisionTreeClassifier",acc_DT)
+    st.write("algoritmoDecisionTreeClassifier",entrena.getAcc_DT())
 
-    acc_KN=entrena.algoritmoKNeighborsClassifier()
+    entrena.algoritmoKNeighborsClassifier()
     
-    st.write("algoritmoKNeighborsClassifier ",acc_KN)
+    st.write("algoritmoKNeighborsClassifier ",entrena.getAcc_KN())
 
-    acc_RF=entrena.algoritmoRandomForestClassifier()
+    entrena.algoritmoRandomForestClassifier()
   
-    st.write("algoritmoRandomForestClassifier",acc_RF)
+    st.write("algoritmoRandomForestClassifier",entrena.getAcc_RF())
 
-    acc_NB=entrena.algoritmoGaussianNB()
+    entrena.algoritmoGaussianNB()
    
-    st.write("algoritmoGaussianNB",acc_NB)
+    st.write("algoritmoGaussianNB",entrena.getAcc_NB())
 
-    acc_SVC=entrena.SVC()
+    entrena.SVC()
    
-    st.write("algoritmoGaussianNB",acc_SVC)
+    st.write("SVC",entrena.getAcc_SVC())
 
     return entrena
 
@@ -48,38 +48,46 @@ def calcularEntrenamiento(df ,opciones):
 pantalla=st.session_state["pantalla"]
 
 if(pantalla.getEntrenar()==1):
+    col1, col2 = st.columns(2)
+    with col1:
 
-    opciones = st.multiselect("Datos de cabecera:", 
+        opciones = st.multiselect("Eligues columnas para para realiza Entrenamiento :", 
                             ["Age", "SibSp", "Parch","Fare","Sex_male","Pclass_2",
                             "Pclass_3","Embarked_Q","Embarked_S"])
 
-    st.write("Has elegido los siguientes frameworks: ", opciones)
+    with col2:       
+        st.write("Has elegido los siguientes columnas: ", opciones)
 
+    
     if st.button("Realizar Estudio"):
-        resulEntrenamiento=calcularEntrenamiento(st.session_state["df_datos_preprocesado"] ,opciones)
+        print(opciones)
+        if (opciones!=[]):
+            resulEntrenamiento=calcularEntrenamiento(st.session_state["df_datos_preprocesado"] ,opciones)
        
        
        
-        if "Entrenamiento" not in st.session_state:
-            st.session_state["Entrenamiento"] = ""
-        st.session_state["Entrenamiento"]= resulEntrenamiento
+            if "Entrenamiento" not in st.session_state:
+                st.session_state["Entrenamiento"] = ""
+            st.session_state["Entrenamiento"]= resulEntrenamiento
 
-        if "opciones" not in st.session_state:
-            st.session_state["opciones"] = ""
-        st.session_state["opciones"]= opciones
+            if "opciones" not in st.session_state:
+                st.session_state["opciones"] = ""
+            st.session_state["opciones"]= opciones
+            
+            pantalla.pulsarAnalisis()
+
+            st.session_state["pantalla"] = pantalla
         
-        pantalla.pulsarAnalisis()
-
-        st.session_state["pantalla"] = pantalla
-  
-       
+        else:
+            st.write("Eligue al menos una opciona")
 
 
 
 
 
 else:
-    st.write("Error en la pantalla")
+    st.write("Error en la pantalla .Debe ejecurtase antes las pantallas anteriores")
+
 
 
 

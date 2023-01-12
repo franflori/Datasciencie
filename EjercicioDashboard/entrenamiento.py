@@ -43,7 +43,7 @@ class Entrenamiento():
         self.clf_KN.fit(self.X_train, self.y_train)
         y_pred = self.clf_KN.predict(self.X_test)
         self.acc_KN = accuracy_score(self.y_test, y_pred)
-        return self.acc_KN
+       #return self.acc_KN
 
     def algoritmoDecisionTreeClassifier(self):
         #DecisionTreeClassifier
@@ -52,7 +52,7 @@ class Entrenamiento():
         y_pred = self.clf_DT.predict(self.X_test)
         self.acc_DT = accuracy_score(self.y_test, y_pred)
        
-        return self.acc_DT
+        #return self.acc_DT
     
     def algoritmoRandomForestClassifier(self):
         # RandomForestClassifier
@@ -60,7 +60,7 @@ class Entrenamiento():
         self.clf_RF.fit(self.X_train, self.y_train)
         y_pred = self.clf_RF.predict(self.X_test)
         self.acc_RF = accuracy_score(self.y_test, y_pred)
-        return self.acc_RF 
+        #return self.acc_RF 
     
     def  algoritmoGaussianNB(self):
 
@@ -69,7 +69,7 @@ class Entrenamiento():
         self.clf_NB.fit(self.X_train, self.y_train)
         y_pred = self.clf_NB.predict(self.X_test)
         self.acc_NB = accuracy_score(self.y_test, y_pred)
-        return self.acc_NB
+        #return self.acc_NB
     
     def  SVC(self):
 
@@ -77,7 +77,7 @@ class Entrenamiento():
         self.clf_SVC.fit(self.X_train, self.y_train)
         y_pred = self.clf_SVC.predict(self.X_test)
         self.acc_SVC = accuracy_score(self.y_test, y_pred)
-        return self.acc_SVC
+        #return self.acc_SVC
     
 
     def predecir(self,algoritmo,valorx):
@@ -98,5 +98,18 @@ class Entrenamiento():
 
 
         return resultado
-
-             
+   
+    def getAcc_KN(self):
+        return self.acc_KN
+    def getAcc_DT(self):
+        return self.acc_DT
+    def getAcc_RF(self):
+        return self.acc_RF
+    def getAcc_NB(self):
+        return self.acc_NB
+    
+    def getAcc_SVC(self):
+        return self.acc_SVC
+    
+    
+   

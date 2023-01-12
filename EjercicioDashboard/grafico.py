@@ -58,46 +58,66 @@ class Grafico():
 
         st.pyplot(fig)
 
+
+    def ErrorValoresNumerico(self,cadena1,cadena2):
+      
+        if cadena1=="Embarked" and cadena2=="Sex":
+            return False
+            
+        if cadena2=="Embarked" and cadena1=="Sex":
+            return False
+        return True
+
+
     def iniciaGraficios(self,lista,df,existeEmbarke):
         st.write("")
 
-      
-        datos = st.radio(
-        "Elegir graficos",
-         ('No Aplicar','histograma', 'Grafica Barra','Violint'))
-        if datos=='histograma':
-            nuevalista=lista
-    
-            if(existeEmbarke):
-                nuevalista.remove("Embarked")
-           
-
-            elegirhis = st.selectbox(
-            "Elegir filtro",
-            nuevalista)
-           
-            self.histrogama(df[elegirhis])
-
-        if datos=='Grafica Barra':
-
-            elegirBar = st.selectbox(
-            "Elegir filtro",
-            lista)
-            
-            self.funcion_graficas(elegirBar,df)
+        col1, col2 = st.columns(2)
+        with col1:
+            datos = st.radio(
+            "Elegir graficos",
+            ('No Aplicar','histograma', 'Grafica Barra','Violint'))
+        
+       
+        with col2:
+            if datos=='histograma':
+                nuevalista=lista
+        
+                if(existeEmbarke):
+                    nuevalista.remove("Embarked")
             
 
-        if datos=='Violint':
-           
-            elegirval = st.selectbox(
-            "Elegir filtro",
-            lista,key="dos")
-            if elegirval !="":
-                elegirva2 = st.selectbox(
+                elegirhis = st.selectbox(
                 "Elegir filtro",
-                lista,key="uno")
-                if elegirval!=elegirva2:
-                    self.violinplot(elegirval,elegirva2,"Survived",df)
-        if datos=="No Aplicar":
-             st.write("")
+                nuevalista)
+            
+                self.histrogama(df[elegirhis])
+
+            if datos=='Grafica Barra':
+
+                elegirBar = st.selectbox(
+                "Elegir filtro",
+                lista)
+                
+                self.funcion_graficas(elegirBar,df)
+                
+
+            if datos=='Violint':
+            
+                elegirval = st.selectbox(
+                "Elegir valor",
+                lista,key="dos")
+                if elegirval !="":
+                    elegirva2 = st.selectbox(
+                    "Elegir valor",
+                    lista,key="uno")
+                    if elegirval!=elegirva2 and self.ErrorValoresNumerico(elegirval,elegirva2):
+                        self.violinplot(elegirval,elegirva2,"Survived",df)
+                    elif elegirval==elegirva2:
+                        st.write("Para  dibujar este Gráfico los dos valores debe ser distintos")
+                    else:
+                         st.write("Para  dibujar este Gráfico al menos un valor debe ser númerico")
+
+            if datos=="No Aplicar":
+                st.write("")
         

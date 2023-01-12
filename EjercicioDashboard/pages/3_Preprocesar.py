@@ -4,7 +4,7 @@ from pasajero import Pasajero
 from pantalla import Pantalla
 from grafico import Grafico
 
-st.title("Pre procesar")
+
 
 
 def preprocesar(df):
@@ -24,27 +24,33 @@ def preprocesar(df):
     df=preprocesar.dummies_crear(df,"Embarked")
     df,memaAge,stdAge=preprocesar.escalado_Age(df)
     df,meanFare,stdFare=preprocesar.escalado_Fare(df)
-    st.write(df.head())
-
-    st.write(df.isnull().sum())
+   
     return df,memaAge,stdAge,meanFare,stdFare
 
-
+st.title("Preprocesar")
 
 pantalla=st.session_state["pantalla"]
 
 
 if(pantalla.getPreprocesar()==1):
-    st.write("final")
 
-    print (st.session_state["df_datos"])
+    st.title("Datos Sin Modificación")
+    st.dataframe(st.session_state["df_datos"])
+   
     df,memaAge,stdAg,meanFare,stdFare=preprocesar(st.session_state["df_datos"])
 
-    st.write("Vamos a imprimir los primeros 5 valores del dataset")
-    st.write(df.tail())
+    st.markdown("☑️Elimina columna nombre")
 
-   
-   
+    st.markdown("☑️Elimina columna Ticket")
+    st.markdown("☑️Elimina columna Cabin por falta de informacion")
+    st.markdown("☑️Modificamos y Creamos tablas dummies hombre/mujer")
+    st.markdown("☑️Modificamos y Creamos tablas dummies columnas con strings con 3 opciones \"Embarked\"")
+    
+    st.markdown("☑️Modificamos y Creamos tablas dummies columnas\"Pclass\" hace referenica a las 3 clases")
+    st.markdown("☑️Elminiar valores nulos de la  Edad, Embarque por valores de la medias")
+
+
+
    
     if "df_datos_preprocesado" not in st.session_state:
         st.session_state["df_datos_preprocesado"] = ""
@@ -70,8 +76,9 @@ if(pantalla.getPreprocesar()==1):
     
 
     st.session_state["pantalla"] = pantalla
+st.title("Datos del Dataset Modificado")
 
-st.write(st.session_state["df_datos_preprocesado"])
+st.dataframe(st.session_state["df_datos_preprocesado"])
 pintarGrafico=Grafico()
 cadena=["Age", "SibSp", "Parch","Fare","Sex_male","Pclass_2",
                             "Pclass_3","Embarked_Q","Embarked_S"]

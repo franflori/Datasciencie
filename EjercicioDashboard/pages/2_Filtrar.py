@@ -175,22 +175,22 @@ pantalla=st.session_state["pantalla"]
 
 
 
-#tab1, tab2= st.tabs(["DATOS", "GRAFICO"])
-#with tab1:
-#if(pantalla.getIniciacion()==0):
-if(True):
-    filtrapasajero= Pasajero()
-    filtrapasajero,filtraedad,filtraHermano,filtrafamilia,filtraPrecio=captardatos(filtrapasajero)
-    datos=st.session_state["df_datos"]
-   # if st.button("Realizar Filtado") :
-    datos=filtrado(filtrapasajero,st.session_state["df_datos"],filtraedad,filtraHermano,filtrafamilia,filtraPrecio)
-    st.write(datos)
+
+
+filtrapasajero= Pasajero()
+filtrapasajero,filtraedad,filtraHermano,filtrafamilia,filtraPrecio=captardatos(filtrapasajero)
+datos=st.session_state["df_datos"]
+
+datos=filtrado(filtrapasajero,st.session_state["df_datos"],filtraedad,filtraHermano,filtrafamilia,filtraPrecio)
+
+st.title("Datos del Dataset")
+st.dataframe(datos)
         
         
-#with tab2:  
-    pintarGrafico=Grafico()
-    cadena=["Pclass", "Sex", "Age","SibSp","Parch","Fare",
+
+pintarGrafico=Grafico()
+cadena=["Pclass", "Sex", "Age","SibSp","Parch","Fare",
                            "Embarked"]
-    pintarGrafico.iniciaGraficios(cadena,datos,True)
+pintarGrafico.iniciaGraficios(cadena,datos,True)
 pantalla.pulsaPrepocesar()
 
